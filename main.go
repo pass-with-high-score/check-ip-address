@@ -111,19 +111,19 @@ func loadGeoDB() error {
 	}
 
 	// Load City database
-	cityDB, err = geoip2.Open("/opt/homebrew/var/GeoIP/GeoLite2-City.mmdb")
+	cityDB, err = geoip2.Open("/var/lib/GeoIP/GeoLite2-City.mmdb")
 	if err != nil {
 		log.Printf("Warning: Could not load City DB: %v", err)
 	}
 
 	// Load ISP database
-	ispDB, err = geoip2.Open("/opt/homebrew/var/GeoIP/GeoLite2-ISP.mmdb")
+	ispDB, err = geoip2.Open("/var/lib/GeoIP/GeoLite2-ISP.mmdb")
 	if err != nil {
 		log.Printf("Warning: Could not load ISP DB: %v", err)
 	}
 
 	// Load ASN database
-	asnDB, err = geoip2.Open("/opt/homebrew/var/GeoIP/GeoLite2-ASN.mmdb")
+	asnDB, err = geoip2.Open("/var/lib/GeoIP/GeoLite2-ASN.mmdb")
 	if err != nil {
 		log.Printf("Warning: Could not load ASN DB: %v", err)
 	}
