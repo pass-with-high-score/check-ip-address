@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	"path/filepath"
 	"syscall"
 
 	"github.com/oschwald/geoip2-golang"
@@ -28,9 +29,14 @@ func LoadDB() error {
 		ASNDB.Close()
 	}
 
-	CityDB, _ = geoip2.Open("/var/lib/GeoIP/GeoLite2-City.mmdb")
-	ISPDB, _ = geoip2.Open("/var/lib/GeoIP/GeoLite2-ISP.mmdb")
-	ASNDB, _ = geoip2.Open("/var/lib/GeoIP/GeoLite2-ASN.mmdb")
+	dbDir := os.Getenv("GEOIP_DB_DIR")
+	if dbDir == "" {
+		dbDir = "./db"
+	}
+
+	CityDB, _ = geoip2.Open(filepath.Join(dbDir, "GeoLite2-City.mmdb"))
+	ISPDB, _ = geoip2.Open(filepath.Join(dbDir, "GeoLite2-ISP.mmdb"))
+	ASNDB, _ = geoip2.Open(filepath.Join(dbDir, "GeoLite2-ASN.mmdb"))
 
 	if CityDB == nil && ISPDB == nil && ASNDB == nil {
 		return err

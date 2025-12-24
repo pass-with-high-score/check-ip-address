@@ -1,3 +1,4 @@
+export GEOIP_DB_DIR=/app/db
 git pull origin main
 go mod tidy
 GOOS=linux GOARCH=amd64 go build -o checkip
