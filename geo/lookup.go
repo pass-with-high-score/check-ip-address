@@ -3,6 +3,7 @@ package geo
 import (
 	"fmt"
 	"net"
+	"strings"
 
 	"checkip/model"
 )
@@ -29,7 +30,7 @@ func LookupIP(ipStr string) model.IPInfo {
 				Timezone:    city.Location.TimeZone,
 				Latitude:    city.Location.Latitude,
 				Longitude:   city.Location.Longitude,
-				CountryFlag: fmt.Sprintf("https://flagcdn.com/w40/%s.png", city.Country.IsoCode),
+				CountryFlag: fmt.Sprintf("https://flagcdn.com/w40/%s.png", strings.ToLower(city.Country.IsoCode)),
 			}
 
 			if len(city.Subdivisions) > 0 {
