@@ -26,6 +26,8 @@ func LookupIP(ipStr string) model.IPInfo {
 				Country:     city.Country.Names["en"],
 				CountryCode: city.Country.IsoCode,
 				Timezone:    city.Location.TimeZone,
+				Latitude:    city.Location.Latitude,
+				Longitude:   city.Location.Longitude,
 			}
 
 			if len(city.Subdivisions) > 0 {
