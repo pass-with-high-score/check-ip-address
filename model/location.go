@@ -8,4 +8,5 @@ type Location struct {
 	Timezone    string  `json:"timezone,omitempty"`
 	Latitude    float64 `json:"latitude,omitempty"`
 	Longitude   float64 `json:"longitude,omitempty"`
+	CountryFlag string  `json:"country_flag,omitempty"`
 }
