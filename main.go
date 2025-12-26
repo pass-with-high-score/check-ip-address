@@ -17,6 +17,7 @@ func main() {
 	geo.HandleReloadSignal()
 
 	http.HandleFunc("/", handler.IPHandler)
+	http.HandleFunc("/api/search", handler.SearchHandler)
 
 	log.Println("Server starting on :8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
